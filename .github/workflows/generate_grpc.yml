@@ -1,0 +1,18 @@
+name: Build grpc stubs
+
+on:
+  repository_dispatch:
+    types: [generate_grpc]
+
+jobs:
+  do_something:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Running grpc build
+        run: |
+          echo "Triggered by push to first repo"
+          echo "Ref: ${{ github.event.client_payload.ref }}"
+          echo "SHA: ${{ github.event.client_payload.sha }}"
+          
